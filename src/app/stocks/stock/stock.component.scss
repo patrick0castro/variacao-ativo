@@ -1,0 +1,51 @@
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 15px;
+
+    form {
+      display: flex;
+      gap: 10px;
+      div {
+        flex: 1
+      }
+    }
+}
+
+.mat-mdc-form-field {
+    width: 100%;
+}
+
+.mat-mdc-table {
+  width: 100%;
+}
+
+.table-container {
+  max-height: 600px;
+  overflow: auto;
+}
+
+table {
+  .cdk-header-cell,
+  .cdk-cell {
+    border: 1px solid #ccc;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .mat-column-numberDay {
+    width: 32px;
+    text-align: center;
+  }
+  
+  .mat-column-date {
+    width: 100px;
+    text-align: center;
+  }
+}
+
+.chart {
+  margin-top: 20px;
+}
