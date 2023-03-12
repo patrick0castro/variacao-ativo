@@ -7,6 +7,10 @@ const routes: Routes = [
     path: '',
     component: StockComponent,
   },
+  {
+    path: ':code',
+    component: StockComponent,
+  },
 ];
 
 @NgModule({

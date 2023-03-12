@@ -7,6 +7,7 @@ import localePt from '@angular/common/locales/pt';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
 
 registerLocaleData(localePt);
 
@@ -17,6 +18,7 @@ registerLocaleData(localePt);
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    RouterModule,
   ],
   providers: [
     DatePipe,

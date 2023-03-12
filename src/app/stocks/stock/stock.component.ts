@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { addDays, fromUnixTime } from 'date-fns';
 import { debounceTime, map, Observable, startWith } from 'rxjs';
 import { PeriodDate } from '../models/period-date.model';
@@ -21,7 +22,7 @@ export class StockComponent {
 
   public stock: Stock[] = [];
   public formGroup = this.formBuilder.group({
-    stockControl: 'PETR4',
+    stockControl: '',
   });
 
   public displayedColumns = [
@@ -33,6 +34,8 @@ export class StockComponent {
   ];
 
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private stockService: StockService,
     private formBuilder: FormBuilder
   ) {
@@ -55,10 +58,21 @@ export class StockComponent {
         map((value) => this._filter(value || ''))
       );
 
-    this.onSubmit();
+    this.route.params.subscribe((params) => {
+      const code = params['code'];
+      if (code) {
+        this.formGroup.get('stockControl')?.setValue(code);
+      } else {
+        this.formGroup.get('stockControl')?.setValue('PETR4');
+      }
+      this.onSubmit();
+    });
   }
 
   onSubmit() {
+    const teste = this.formGroup.get('stockControl')!.value;
+    this.router.navigate(['/' + teste], { replaceUrl: true });
+
     this.getStock(this.formGroup.get('stockControl')!.value || '');
   }
 
