@@ -138,4 +138,8 @@ export class StockComponent {
   ): number {
     return ((valuePrevious - valuePosterior) / valuePosterior) * -1;
   }
+
+  clearSearch() {
+    this.formGroup.get('stockControl')?.patchValue('');
+  }
 }

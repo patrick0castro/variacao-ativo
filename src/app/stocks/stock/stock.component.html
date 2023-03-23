@@ -4,14 +4,19 @@
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Ativos</mat-label>
-        <input
-          type="text"
-          placeholder="Selecione"
-          aria-label="Ativos"
-          matInput
-          formControlName="stockControl"
-          [matAutocomplete]="auto"
-        />
+        <div class="input-search">
+          <input
+            type="text"
+            placeholder="Selecione"
+            aria-label="Ativos"
+            matInput
+            formControlName="stockControl"
+            [matAutocomplete]="auto"
+          />
+          <span (click)="clearSearch()">
+            <mat-icon color="primary">close</mat-icon>
+          </span>
+        </div>
         <mat-autocomplete
           autoActiveFirstOption
           #auto="matAutocomplete"
@@ -58,7 +63,7 @@
       </ng-container>
 
       <ng-container matColumnDef="percentageChangePreviousDay">
-        <th mat-header-cell *matHeaderCellDef>Variação em relaçào a D-1</th>
+        <th mat-header-cell *matHeaderCellDef>Variação em relação a D-1</th>
         <td mat-cell *matCellDef="let item">
           {{ item.percentageChangePreviousDay | percent : "1.2-2" }}
         </td>
@@ -78,11 +83,11 @@
   </div>
 
   <div *ngIf="stock.length" class="chart">
-    <app-chart-variance  [data]="stock"></app-chart-variance>
+    <app-chart-variance [data]="stock"></app-chart-variance>
   </div>
 
   <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-  
+
   <div class="alert warn" *ngIf="!stock.length && !loading">
     Não foi encontrado dados para o Ativo "{{ stockSelected }}"
   </div>

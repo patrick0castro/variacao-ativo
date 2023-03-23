@@ -10,6 +10,11 @@
         flex: 1
       }
     }
+
+    .input-search {
+      display: flex;
+      cursor: pointer;
+    }
 }
 
 .mat-mdc-form-field {
